@@ -1,11 +1,15 @@
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import Providers from '@/components/Providers'
+import Sidebar from '@/components/Sidebar'
+import { Toaster } from '@/components/ui/toaster'
 import '@/styles/globals.css'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Next.js 14 Boilerplate'
+  title: 'Darulhikmet'
 }
 
 export default function RootLayout({
@@ -15,9 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>
+      <body className="flex h-screen">
         <Providers>
-          <main>{children}</main>
+          <Sidebar />
+          <div className="flex flex-1 flex-col transition-all md:ml-72">
+            <Header />
+            <main className="p-8">{children}</main>
+            <Footer />
+          </div>
+          <Toaster />
         </Providers>
       </body>
     </html>

@@ -1,17 +1,16 @@
-import { Separator } from '@/components/ui/separator'
-
 export default function Home() {
   return (
-    <div className="mx-auto flex h-screen max-w-xs flex-col justify-center">
-      <div className="text-2xl font-bold">Next.js 14 - Boilerplate</div>
-      <Separator className="my-4" />
-      <a
-        className="text-primary"
-        href="https://github.com/05akalan57"
-        target="_blank"
-      >
-        Muhammet Emin Akalan
-      </a>
+    <div className="">
+      {Array(50)
+        .fill(0)
+        .map((_, i) => (
+          <p className="mb-4 last:mb-0" key={i}>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
+            eveniet illo, nobis voluptatibus minima dolores porro harum
+            consequatur ipsum quaerat dolore sequi eius perferendis labore hic
+            repellat? Voluptas, quasi molestiae?
+          </p>
+        ))}
     </div>
   )
 }
