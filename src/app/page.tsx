@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="">
+    <div>
       {Array(50)
         .fill(0)
         .map((_, i) => (

@@ -40,6 +40,7 @@ export default function SupportDeveloper() {
         <div className="flex space-x-4">
           <Input id="iban" defaultValue={IBAN} readOnly />
           <Button
+            variant="outline"
             type="submit"
             onClick={() => {
               navigator.clipboard.writeText(IBAN.replaceAll(' ', ''))
@@ -54,6 +55,7 @@ export default function SupportDeveloper() {
         <div className="flex space-x-4">
           <Input id="receiver" defaultValue={ALICI_ADI} readOnly />
           <Button
+            variant="outline"
             type="submit"
             onClick={() => {
               navigator.clipboard.writeText(ALICI_ADI)
@@ -75,6 +77,7 @@ export default function SupportDeveloper() {
             <div className="mt-4 flex space-x-4">
               <Button
                 className="w-full"
+                variant="outline"
                 onClick={() => {
                   window.location.href = 'https://twitter.com/05akalan57'
                 }}
@@ -83,6 +86,7 @@ export default function SupportDeveloper() {
               </Button>
               <Button
                 className="w-full"
+                variant="outline"
                 onClick={() => {
                   window.location.href = 'mailto:05akalan57@gmail.com'
                 }}

@@ -19,10 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="flex h-screen">
+      <body>
         <Providers>
           <Sidebar />
-          <div className="flex flex-1 flex-col transition-all md:ml-72">
+          <div className="transition-all md:ml-72">
             <Header />
             <main className="p-8">{children}</main>
             <Footer />

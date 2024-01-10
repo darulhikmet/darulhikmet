@@ -1,12 +1,17 @@
+import getCommunities from '@/app/services/getCommunities'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import { Sparkle } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import SupportDeveloper from './SupportDeveloper'
 
 const { version } = require('../../package.json')
 
-export default function Sidebar() {
+export default async function Sidebar() {
+  const data = await getCommunities()
+
   return (
-    <nav className="fixed left-0 flex h-screen w-72 -translate-x-full flex-col border-r bg-background transition-all md:translate-x-0">
+    <nav className="fixed left-0 flex h-screen w-72 -translate-x-full flex-col border-r transition-all md:translate-x-0">
       <Link
         className="group relative flex min-h-24 items-center justify-center border-b text-2xl font-bold transition"
         href="/"
@@ -17,46 +22,27 @@ export default function Sidebar() {
           {version}
         </span>
       </Link>
-      <div className="sidebar-scroll flex cursor-pointer flex-col overflow-y-auto px-4 py-8 text-sm font-medium text-muted-foreground">
-        {Array(24)
-          .fill(0)
-          .map(() => {
-            return (
-              <>
-                <Link
-                  className="rounded px-4 py-2 hover:bg-muted hover:text-white"
-                  href="/community/bekir-develi"
-                >
-                  Bekir Develi
-                </Link>
-                <Link
-                  className="rounded px-4 py-2 hover:bg-muted hover:text-white"
-                  href="/community/altay-cem-meric"
-                >
-                  Altay Cem Meriç
-                </Link>
-                <Link
-                  className="rounded px-4 py-2 hover:bg-muted hover:text-white"
-                  href="/community/yusuf-kaplan"
-                >
-                  Yusuf Kaplan
-                </Link>
-                <Link
-                  className="rounded px-4 py-2 hover:bg-muted hover:text-white"
-                  href="/community/fulya-ozturk"
-                >
-                  Fulya Öztürk
-                </Link>
-                <Link
-                  className="rounded px-4 py-2 hover:bg-muted hover:text-white"
-                  href="/community/saliha-erdim"
-                >
-                  Saliha Erdim
-                </Link>
-              </>
-            )
-          })}
-      </div>
+      <ScrollArea>
+        <div className="flex flex-col px-4 py-8 text-sm font-medium text-muted-foreground">
+          {data.map((item, i) => (
+            <Link
+              className="flex items-center rounded px-4 py-2 hover:bg-muted hover:text-foreground"
+              href={`/community/${item.slug}`}
+              key={i}
+            >
+              <span className="relative h-5 w-5 overflow-hidden rounded-full bg-muted">
+                <Image
+                  className="object-cover"
+                  src={item.avatar}
+                  alt={item.name}
+                  fill
+                />
+              </span>
+              <span className="ml-2">{item.name}</span>
+            </Link>
+          ))}
+        </div>
+      </ScrollArea>
       <div className="mt-auto flex min-h-24 items-center justify-center border-t">
         <SupportDeveloper />
       </div>
