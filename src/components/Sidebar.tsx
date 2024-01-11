@@ -1,5 +1,5 @@
-import getCommunities from '@/app/services/getCommunities'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import getCommunities from '@/services/getCommunities'
 import { Sparkle } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
