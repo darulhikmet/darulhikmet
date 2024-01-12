@@ -4,6 +4,7 @@ import Providers from '@/components/Providers'
 import Sidebar from '@/components/Sidebar'
 import { Toaster } from '@/components/ui/toaster'
 import '@/styles/globals.css'
+import { Analytics } from '@vercel/analytics/react'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
@@ -24,11 +25,12 @@ export default function RootLayout({
           <Sidebar />
           <div className="transition-all md:ml-72">
             <Header />
-            <main className="p-8">{children}</main>
+            <main className="p-6">{children}</main>
             <Footer />
           </div>
           <Toaster />
         </Providers>
+        <Analytics />
       </body>
     </html>
   )

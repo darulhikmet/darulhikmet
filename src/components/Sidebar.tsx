@@ -23,11 +23,11 @@ export default async function Sidebar() {
         </span>
       </Link>
       <ScrollArea>
-        <div className="flex flex-col px-4 py-8 text-sm font-medium text-muted-foreground">
+        <div className="flex flex-col px-4 py-6 text-sm font-medium text-muted-foreground">
           {data.map((item, i) => (
             <Link
               className="flex items-center rounded px-4 py-2 hover:bg-muted hover:text-foreground"
-              href={`/community/${item.slug}`}
+              href={`/community/${item.name}`}
               key={i}
             >
               <span className="relative h-5 w-5 overflow-hidden rounded-full bg-muted">
@@ -49,3 +49,5 @@ export default async function Sidebar() {
     </nav>
   )
 }
+
+export const revalidate = 86400

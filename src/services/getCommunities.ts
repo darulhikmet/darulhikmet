@@ -1,12 +1,10 @@
 'use server'
 
+import connectDB from '@/lib/connectDB'
 import Community from '@/models/Community'
-import mongoose from 'mongoose'
-
-const MONGODB_URI = process.env.MONGODB_URI as string
 
 export default async function getCommunities() {
-  await mongoose.connect(MONGODB_URI, {})
+  await connectDB()
 
   return await Community.find()
 }

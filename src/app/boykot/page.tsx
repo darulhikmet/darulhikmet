@@ -17,7 +17,7 @@ type Brand = {
   name: string
   description: string
   logo: string
-  isNew: boolean
+  isAddedNew: boolean
 }
 
 export default function Boykot() {
@@ -26,7 +26,7 @@ export default function Boykot() {
   const [filteredData, setFilteredData] = useState<Brand[]>()
 
   const fetchData = async () => {
-    const brandsData: Brand[] = await getBrands()
+    const brandsData: Brand[] = JSON.parse(await getBrands())
 
     setData(brandsData.reverse())
     setFilteredData(brandsData)
@@ -55,11 +55,11 @@ export default function Boykot() {
         value={searchTerm}
         onChange={handleSearch}
       />
-      <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {filteredData
           ? filteredData.map((item, i) => (
               <Card className="relative" key={i}>
-                {item.isNew && (
+                {item.isAddedNew && (
                   <Badge className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 animate-pulse">
                     Yeni
                   </Badge>
@@ -69,10 +69,10 @@ export default function Boykot() {
                   <CardDescription>{item.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="relative h-40 w-full overflow-hidden rounded bg-muted">
+                  <div className="relative h-40 overflow-hidden rounded bg-muted">
                     {item.logo && (
                       <Image
-                        className="object-cover"
+                        className="object-cover grayscale"
                         src={item.logo}
                         alt={item.name}
                         fill
@@ -85,7 +85,15 @@ export default function Boykot() {
           : Array(25)
               .fill(0)
               .map((_, i) => (
-                <Card className="h-[284px] animate-pulse" key={i} />
+                <Card className="animate-pulse" key={i}>
+                  <CardHeader>
+                    <CardTitle className="h-6 w-full max-w-48 rounded bg-muted" />
+                    <CardDescription className="h-5 w-full max-w-24 rounded bg-muted" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="relative h-40 overflow-hidden rounded bg-muted"></div>
+                  </CardContent>
+                </Card>
               ))}
       </div>
     </div>

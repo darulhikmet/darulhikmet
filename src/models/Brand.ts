@@ -1,12 +1,10 @@
-import { Schema, model, models } from 'mongoose'
+import { model, models, Schema } from 'mongoose'
 
-const brandSchema = new Schema({
+const Brand = new Schema({
   name: String,
   description: String,
   logo: String,
-  isNew: Boolean
+  isAddedNew: Boolean
 })
 
-const Brand = models.brand || model('brand', brandSchema)
-
-export default Brand
+export default models.Brand || model('Brand', Brand)

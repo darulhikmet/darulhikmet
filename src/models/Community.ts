@@ -1,10 +1,9 @@
-import { Schema, model, models } from 'mongoose'
+import { model, models, Schema } from 'mongoose'
 
-const communitySchema = new Schema({
+const Community = new Schema({
   name: String,
   avatar: String,
-  slug: String
+  about: String
 })
-const Community = models.community || model('community', communitySchema)
 
-export default Community
+export default models.Community || model('Community', Community)
