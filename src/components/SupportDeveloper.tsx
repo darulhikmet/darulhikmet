@@ -47,7 +47,7 @@ export default function SupportDeveloper() {
               toast({ title: 'IBAN Kopyalandı' })
             }}
           >
-            <Copy className="mr-2 h-4 w-4" />
+            <Copy className="mr-2 size-4" />
             Kopyala
           </Button>
         </div>
@@ -62,7 +62,7 @@ export default function SupportDeveloper() {
               toast({ title: 'Alıcı Adı Kopyalandı' })
             }}
           >
-            <Copy className="mr-2 h-4 w-4" />
+            <Copy className="mr-2 size-4" />
             Kopyala
           </Button>
         </div>
@@ -82,7 +82,7 @@ export default function SupportDeveloper() {
                   window.location.href = 'https://twitter.com/05akalan57'
                 }}
               >
-                <TwitterIcon className="mr-2 h-4 w-4" />
+                <TwitterIcon className="mr-2 size-4" />
               </Button>
               <Button
                 className="w-full"
@@ -91,7 +91,7 @@ export default function SupportDeveloper() {
                   window.location.href = 'mailto:05akalan57@gmail.com'
                 }}
               >
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 size-4" />
               </Button>
             </div>
           </div>

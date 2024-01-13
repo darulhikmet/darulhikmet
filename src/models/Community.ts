@@ -1,9 +1,16 @@
 import { model, models, Schema } from 'mongoose'
 
-const Community = new Schema({
+const communitySchema = new Schema({
   name: String,
   avatar: String,
-  about: String
+  about: String,
+  socialMedia: {
+    twitter: String,
+    instagram: String,
+    youtube: String,
+    facebook: String,
+    linkedin: String
+  }
 })
 
-export default models.Community || model('Community', Community)
+export default models.Community || model('Community', communitySchema)

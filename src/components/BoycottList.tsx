@@ -20,15 +20,15 @@ type Brand = {
   isAddedNew: boolean
 }
 
-export default function Boykot() {
+export default function BoycottList() {
   const [searchTerm, setSearchTerm] = useState('')
-  const [data, setData] = useState<Brand[]>([])
+  const [boycottList, setBoycottList] = useState<Brand[]>([])
   const [filteredData, setFilteredData] = useState<Brand[]>()
 
   const fetchData = async () => {
     const brandsData: Brand[] = JSON.parse(await getBrands())
 
-    setData(brandsData.reverse())
+    setBoycottList(brandsData.reverse())
     setFilteredData(brandsData)
   }
 
@@ -37,8 +37,8 @@ export default function Boykot() {
     setSearchTerm(term)
 
     const filtered = term
-      ? data.filter(item => item.name.toLowerCase().includes(term))
-      : data
+      ? boycottList.filter(item => item.name.toLowerCase().includes(term))
+      : boycottList
 
     setFilteredData(filtered)
   }

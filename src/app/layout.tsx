@@ -1,16 +1,21 @@
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import Providers from '@/components/Providers'
-import Sidebar from '@/components/Sidebar'
+import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
+import Sidebar from '@/components/layout/Sidebar'
+import ThemeProvider from '@/components/providers/ThemeProvider'
 import { Toaster } from '@/components/ui/toaster'
 import '@/styles/globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'Darulhikmet'
+export const metadata = {
+  metadataBase: 'https://darulhikmet.com',
+  title: 'Darulhikmet',
+  description:
+    'Çeşitli dini kaynakları tek bir yerde buluşturan yerel bir platform.',
+  openGraph: {
+    images: '/opengraph-image.jpg'
+  }
 }
 
 export default function RootLayout({
@@ -21,15 +26,15 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
-        <Providers>
+        <ThemeProvider>
           <Sidebar />
           <div className="transition-all md:ml-72">
             <Header />
-            <main className="p-6">{children}</main>
+            <main>{children}</main>
             <Footer />
           </div>
           <Toaster />
-        </Providers>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

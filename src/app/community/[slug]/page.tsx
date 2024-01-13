@@ -1,72 +1,53 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import getCommunity from '@/services/getCommunity'
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
 import Image from 'next/image'
+import About from './components/About'
+import SocialMedia from './components/SocialMedia'
 
 export default async function Community({
   params: { slug }
 }: {
   params: { slug: string }
 }) {
-  const data = await getCommunity(slug)
+  const community = await getCommunity(slug)
 
   return (
-    <div className="flex gap-6">
-      <div className="xl:border-r">
-        {Array(50)
-          .fill(0)
-          .map((_, i) => (
-            <p className="mb-4 last:mb-0" key={i}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-              eveniet illo, nobis voluptatibus minima dolores porro harum
-              consequatur ipsum quaerat dolore sequi eius perferendis labore hic
-              repellat? Voluptas, quasi molestiae?
-            </p>
-          ))}
+    <div className="flex">
+      <div className="flex w-full p-6 xl:border-r">
+        <div className="mx-auto max-w-screen-lg space-y-4">
+          {Array(50)
+            .fill(0)
+            .map((_, i) => (
+              <Card className="overflow-x-auto" key={i}>
+                <CardHeader>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Reprehenderit sed maiores architecto fugit beatae quasi
+                  similique pariatur quibusdam aperiam cumque laborum officiis
+                  eveniet dignissimos, hic porro, necessitatibus voluptatem
+                  possimus deleniti.
+                </CardHeader>
+              </Card>
+            ))}
+        </div>
       </div>
-      <div className="sticky -top-56 ml-auto hidden h-full min-w-72 max-w-72 space-y-6 xl:block">
+      <div className="sticky -top-60 ml-auto hidden h-full w-full max-w-80 space-y-6 p-6 xl:block">
         <Card>
           <CardHeader>
             <div className="relative h-60 overflow-hidden rounded bg-muted">
               <Image
                 className="object-cover"
-                src={data.avatar}
+                src={community.avatar}
                 alt={slug}
                 fill
               />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="font-medium">{data.name}</div>
+            <div className="font-medium">{community.name}</div>
           </CardContent>
         </Card>
-        <Card>
-          <CardHeader>
-            <div className="font-medium">Hakkında</div>
-            <p>{data.about}</p>
-          </CardHeader>
-        </Card>
-        <Card>
-          <CardHeader>
-            <div className="flex justify-between">
-              <a href="#">
-                <Twitter />
-              </a>
-              <a href="#">
-                <Instagram />
-              </a>
-              <a href="#">
-                <Youtube />
-              </a>
-              <a href="#">
-                <Facebook />
-              </a>
-              <a href="#">
-                <Linkedin />
-              </a>
-            </div>
-          </CardHeader>
-        </Card>
+        <About about={community.about} />
+        <SocialMedia socialMedia={community.socialMedia} />
       </div>
     </div>
   )

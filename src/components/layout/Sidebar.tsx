@@ -1,17 +1,17 @@
+import SupportDeveloper from '@/components/SupportDeveloper'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import getCommunities from '@/services/getCommunities'
 import { Sparkle } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import SupportDeveloper from './SupportDeveloper'
 
-const { version } = require('../../package.json')
+const { version } = require('package.json')
 
 export default async function Sidebar() {
   const data = await getCommunities()
 
   return (
-    <nav className="fixed left-0 flex h-screen w-72 -translate-x-full flex-col border-r transition-all md:translate-x-0">
+    <nav className="fixed left-0 flex h-screen w-full max-w-72 -translate-x-full flex-col border-r bg-background transition-all md:translate-x-0">
       <Link
         className="group relative flex min-h-24 items-center justify-center border-b text-2xl font-bold transition"
         href="/"
@@ -30,7 +30,7 @@ export default async function Sidebar() {
               href={`/community/${item.name}`}
               key={i}
             >
-              <span className="relative h-5 w-5 overflow-hidden rounded-full bg-muted">
+              <span className="relative size-5 min-w-5 overflow-hidden rounded-full bg-muted">
                 <Image
                   className="object-cover"
                   src={item.avatar}
