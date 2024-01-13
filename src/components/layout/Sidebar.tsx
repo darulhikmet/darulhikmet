@@ -34,7 +34,7 @@ export default async function Sidebar() {
                 <Image
                   className="object-cover"
                   src={item.avatar}
-                  alt={item.name}
+                  alt={`${item.name} Topluluk Resmi`}
                   fill
                 />
               </span>

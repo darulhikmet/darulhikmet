@@ -1,8 +1,8 @@
 # dependencies
-/node_modules
+node_modules
 
 # next.js
-/.next
+.next
 
 # env
 .env
@@ -10,3 +10,8 @@
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# service worker
+sw.*
+workbox-*
+swe-worker-*

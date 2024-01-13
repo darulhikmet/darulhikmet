@@ -9,13 +9,15 @@ import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 
 export const metadata = {
-  metadataBase: 'https://darulhikmet.com',
   title: 'Darulhikmet',
-  description:
-    'Çeşitli dini kaynakları tek bir yerde buluşturan yerel bir platform.',
-  openGraph: {
-    images: '/opengraph-image.jpg'
-  }
+  description: 'Çeşitli dini kaynakları tek bir yerde buluşturan platform.',
+  manifest: '/manifest.json',
+  metadataBase: 'https://darulhikmet.com',
+  openGraph: { images: '/opengraph-image.jpg' }
+}
+
+export const viewport = {
+  themeColor: '#000'
 }
 
 export default function RootLayout({

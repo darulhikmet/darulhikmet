@@ -37,7 +37,7 @@ export default async function Community({
               <Image
                 className="object-cover"
                 src={community.avatar}
-                alt={slug}
+                alt={`${slug} Topluluk Resmi`}
                 fill
               />
             </div>
