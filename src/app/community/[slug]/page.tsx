@@ -1,8 +1,17 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import getCommunities from '@/services/getCommunities'
 import getCommunity from '@/services/getCommunity'
 import Image from 'next/image'
 import About from './components/About'
 import SocialMedia from './components/SocialMedia'
+
+export async function generateStaticParams() {
+  const communities = await getCommunities()
+
+  return communities.map(item => {
+    return { slug: item.name }
+  })
+}
 
 export default async function Community({
   params: { slug }

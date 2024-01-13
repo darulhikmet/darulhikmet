@@ -4,14 +4,18 @@ node_modules
 # next.js
 .next
 
-# env
-.env
+# local env files
+.env*.local
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
-# service worker
-sw.*
+# service worker files
+sw.js
 workbox-*
 swe-worker-*
+
+# sitemap files, robots.txt
+sitemap*
+robots.txt

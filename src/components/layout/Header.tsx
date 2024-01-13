@@ -15,7 +15,7 @@ export default function Header() {
           Boykot
         </Link>
       </div>
-      <div className="ml-auto space-x-4">
+      <div className="ml-auto hidden space-x-4 lg:block">
         <AuthButtons />
       </div>
     </div>

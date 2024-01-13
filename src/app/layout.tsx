@@ -12,7 +12,7 @@ export const metadata = {
   title: 'Darulhikmet',
   description: 'Çeşitli dini kaynakları tek bir yerde buluşturan platform.',
   manifest: '/manifest.json',
-  metadataBase: 'https://darulhikmet.com',
+  metadataBase: process.env.SITE_URL,
   openGraph: { images: '/opengraph-image.jpg' }
 }
 
