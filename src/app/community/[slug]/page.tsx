@@ -5,6 +5,16 @@ import Image from 'next/image'
 import About from './components/About'
 import SocialMedia from './components/SocialMedia'
 
+export async function generateMetadata({
+  params: { slug }
+}: {
+  params: { slug: string }
+}) {
+  return {
+    title: `${decodeURIComponent(slug)} - Darulhikmet`
+  }
+}
+
 export async function generateStaticParams() {
   const communities = await getCommunities()
 
