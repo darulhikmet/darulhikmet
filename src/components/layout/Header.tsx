@@ -1,5 +1,6 @@
-import AuthButtons from '@/components/AuthButtons'
 import Link from 'next/link'
+
+import AuthButtons from '@/components/AuthButtons'
 
 export default function Header() {
   return (

@@ -1,5 +1,6 @@
-import { Card, CardHeader } from '@/components/ui/card'
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
+
+import { Card, CardHeader } from '@/components/ui/card'
 
 type SocialMediaLinks = {
   [key: string]: string

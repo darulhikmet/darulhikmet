@@ -1,7 +1,9 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import Image from 'next/image'
+
 import getCommunities from '@/services/getCommunities'
 import getCommunity from '@/services/getCommunity'
-import Image from 'next/image'
+
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import About from './components/About'
 import SocialMedia from './components/SocialMedia'
 

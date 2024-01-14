@@ -1,5 +1,8 @@
 'use client'
 
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
 import { Badge } from '@/components/ui/badge'
 import {
   Card,
@@ -10,8 +13,6 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import getBrands from '@/services/getBrands'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
 type Brand = {
   name: string

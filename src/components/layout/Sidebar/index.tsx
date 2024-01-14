@@ -1,9 +1,12 @@
-import SupportDeveloper from '@/components/SupportDeveloper'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import getCommunities from '@/services/getCommunities'
 import { Sparkle } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import getCommunities from '@/services/getCommunities'
+
+import SupportDeveloper from '@/components/SupportDeveloper'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import OtherMenu from './components/OtherMenu'
 
 const { version } = require('package.json')
 
@@ -22,7 +25,7 @@ export default async function Sidebar() {
           {version}
         </span>
       </Link>
-      <ScrollArea>
+      <ScrollArea className="h-full">
         <div className="flex flex-col px-4 py-6 text-sm font-medium text-muted-foreground">
           {communities.map((item, i) => (
             <Link
@@ -43,7 +46,10 @@ export default async function Sidebar() {
           ))}
         </div>
       </ScrollArea>
-      <div className="mt-auto flex min-h-24 items-center justify-center border-t">
+      <div className="px-4 py-6">
+        <OtherMenu />
+      </div>
+      <div className="border-t px-4 py-6">
         <SupportDeveloper />
       </div>
     </nav>

@@ -1,8 +1,7 @@
 'use client'
 
-import { Input } from '@/components/ui/input'
-import { useToast } from '@/components/ui/use-toast'
 import { Copy, Mail, TwitterIcon } from 'lucide-react'
+
 import { Button } from './ui/button'
 import {
   Dialog,
@@ -16,6 +15,9 @@ import {
 import { Label } from './ui/label'
 import { Separator } from './ui/separator'
 
+import { Input } from '@/components/ui/input'
+import { useToast } from '@/components/ui/use-toast'
+
 export default function SupportDeveloper() {
   const { toast } = useToast()
 
@@ -25,7 +27,9 @@ export default function SupportDeveloper() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Proje Geliştiricisine Destek Ol</Button>
+        <Button className="w-full" variant="outline">
+          Proje Geliştiricisine Destek Ol
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

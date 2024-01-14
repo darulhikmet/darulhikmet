@@ -1,12 +1,14 @@
+import { Analytics } from '@vercel/analytics/react'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+
+import '@/styles/globals.css'
+
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import Sidebar from '@/components/layout/Sidebar'
 import ThemeProvider from '@/components/providers/ThemeProvider'
 import { Toaster } from '@/components/ui/toaster'
-import '@/styles/globals.css'
-import { Analytics } from '@vercel/analytics/react'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
 
 export const metadata = {
   title: 'Darulhikmet',
