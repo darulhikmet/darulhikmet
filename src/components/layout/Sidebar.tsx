@@ -27,18 +27,18 @@ export default async function Sidebar() {
           {communities.map((item, i) => (
             <Link
               className="flex items-center rounded px-4 py-2 hover:bg-muted hover:text-foreground"
-              href={`/community/${item.name}`}
+              href={`/community/${item.name.machineFriendly}`}
               key={i}
             >
               <span className="relative size-5 min-w-5 overflow-hidden rounded-full bg-muted">
                 <Image
                   className="object-cover"
                   src={item.avatar}
-                  alt={`${item.name} Topluluk Resmi`}
+                  alt={`${item.name.humanReadable} topluluk resmi`}
                   fill
                 />
               </span>
-              <span className="ml-2">{item.name}</span>
+              <span className="ml-2">{item.name.humanReadable}</span>
             </Link>
           ))}
         </div>

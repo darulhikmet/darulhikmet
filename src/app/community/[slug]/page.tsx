@@ -5,13 +5,19 @@ import Image from 'next/image'
 import About from './components/About'
 import SocialMedia from './components/SocialMedia'
 
+type Post = {
+  content: string
+}
+
 export async function generateMetadata({
   params: { slug }
 }: {
   params: { slug: string }
 }) {
+  const community = await getCommunity(slug)
+
   return {
-    title: `${decodeURIComponent(slug)} - Darulhikmet`
+    title: `${community.name.humanReadable} | Darulhikmet`
   }
 }
 
@@ -19,7 +25,7 @@ export async function generateStaticParams() {
   const communities = await getCommunities()
 
   return communities.map(item => {
-    return { slug: item.name }
+    return { slug: item.name.machineFriendly }
   })
 }
 
@@ -34,19 +40,11 @@ export default async function Community({
     <div className="flex">
       <div className="flex w-full p-6 xl:border-r">
         <div className="mx-auto max-w-screen-lg space-y-4">
-          {Array(50)
-            .fill(0)
-            .map((_, i) => (
-              <Card className="overflow-x-auto" key={i}>
-                <CardHeader>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Reprehenderit sed maiores architecto fugit beatae quasi
-                  similique pariatur quibusdam aperiam cumque laborum officiis
-                  eveniet dignissimos, hic porro, necessitatibus voluptatem
-                  possimus deleniti.
-                </CardHeader>
-              </Card>
-            ))}
+          {community.posts.map((item: Post, i: number) => (
+            <Card className="overflow-x-auto" key={i}>
+              <CardHeader>{item.content}</CardHeader>
+            </Card>
+          ))}
         </div>
       </div>
       <div className="sticky -top-60 ml-auto hidden h-full w-full max-w-80 space-y-6 p-6 xl:block">
@@ -56,13 +54,13 @@ export default async function Community({
               <Image
                 className="object-cover"
                 src={community.avatar}
-                alt={`${slug} Topluluk Resmi`}
+                alt={`${slug} topluluk resmi`}
                 fill
               />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="font-medium">{community.name}</div>
+            <div className="font-medium">{community.name.humanReadable}</div>
           </CardContent>
         </Card>
         <About about={community.about} />

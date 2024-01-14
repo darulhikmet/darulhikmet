@@ -24,7 +24,12 @@ export default function CommunitySocialMedia({
           {socialMediaIcons.map(
             ({ icon, key }) =>
               socialMedia[key] && (
-                <a key={key} href={socialMedia[key]} target="_blank">
+                <a
+                  key={key}
+                  href={socialMedia[key]}
+                  target="_blank"
+                  aria-label={`${key} simgesi`}
+                >
                   {icon}
                 </a>
               )
