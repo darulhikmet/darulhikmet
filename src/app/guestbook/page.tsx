@@ -36,15 +36,17 @@ export default function Guestbook() {
     e.preventDefault()
 
     try {
-      await addGuestbookEntry(e.target.message.value)
-      await fetchData()
+      const message = (e.target as any).message.value
+      if (message) {
+        await addGuestbookEntry(message)
+        await fetchData()
 
-      setNewEntryMessage('')
+        setNewEntryMessage('')
+      }
     } catch (error) {
       console.error('Error submitting the form:', error)
     }
   }
-
   return (
     <div className="p-6">
       <form onSubmit={e => handleSubmit(e)}>
