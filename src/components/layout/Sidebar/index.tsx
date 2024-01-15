@@ -2,11 +2,11 @@ import { Sparkle } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import getCommunities from '@/services/getCommunities'
-
 import SupportDeveloper from '@/components/SupportDeveloper'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import OtherMenu from './components/OtherMenu'
+
+import getCommunities from '@/services/getCommunities'
 
 const { version } = require('package.json')
 
@@ -49,7 +49,7 @@ export default async function Sidebar() {
       <div className="px-4 py-6">
         <OtherMenu />
       </div>
-      <div className="border-t px-4 py-6">
+      <div className="flex min-h-24 items-center border-t px-4">
         <SupportDeveloper />
       </div>
     </nav>

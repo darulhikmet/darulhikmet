@@ -1,5 +1,6 @@
 'use client'
 
+import { useToast } from '@/components/ui/use-toast'
 import { Button } from './ui/button'
 import {
   Dialog,
@@ -13,8 +14,6 @@ import {
 } from './ui/dialog'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
-
-import { useToast } from '@/components/ui/use-toast'
 
 export default function AuthButtons() {
   const { toast } = useToast()

@@ -1,6 +1,7 @@
 'use server'
 
 import connectDB from '@/lib/connectDB'
+
 import Brand from '@/models/Brand'
 
 export default async function getBrands() {

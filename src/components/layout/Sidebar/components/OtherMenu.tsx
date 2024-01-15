@@ -1,4 +1,5 @@
 import { Bug, Cookie, Info, MessageCircleReply, ScrollText } from 'lucide-react'
+import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -17,26 +18,34 @@ export default function OtherMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" side="right" sideOffset={32}>
-        <DropdownMenuItem>
-          <Info size={16} />
-          <div className="ml-2">Hakkımda</div>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <MessageCircleReply size={16} />
-          <div className="ml-2">Geri Bildirim Gönder</div>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Bug size={16} />
-          <div className="ml-2">Sorun Bildir</div>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <ScrollText size={16} />
-          <div className="ml-2">Gizlilik Sözleşmesi</div>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Cookie size={16} />
-          <div className="ml-2">Çerez Politikası</div>
-        </DropdownMenuItem>
+        <div className="*:cursor-pointer">
+          <DropdownMenuItem asChild>
+            <Link href="/about">
+              <Info size={16} />
+              <div className="ml-2">Hakkımda</div>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <MessageCircleReply size={16} />
+            <div className="ml-2">Geri Bildirim Gönder</div>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Bug size={16} />
+            <div className="ml-2">Sorun Bildir</div>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/privacy-policy">
+              <ScrollText size={16} />
+              <div className="ml-2">Gizlilik Sözleşmesi</div>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/cookie-policy">
+              <Cookie size={16} />
+              <div className="ml-2">Çerez Politikası</div>
+            </Link>
+          </DropdownMenuItem>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   )

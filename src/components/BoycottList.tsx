@@ -12,6 +12,8 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { Skeleton } from './ui/skeleton'
+
 import getBrands from '@/services/getBrands'
 
 type Brand = {
@@ -27,10 +29,10 @@ export default function BoycottList() {
   const [filteredData, setFilteredData] = useState<Brand[]>()
 
   const fetchData = async () => {
-    const brandsData: Brand[] = JSON.parse(await getBrands())
+    const brands: Brand[] = JSON.parse(await getBrands())
 
-    setBoycottList(brandsData.reverse())
-    setFilteredData(brandsData)
+    setBoycottList(brands.reverse())
+    setFilteredData(brands)
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,16 +85,16 @@ export default function BoycottList() {
                 </CardContent>
               </Card>
             ))
-          : Array(25)
+          : Array(20)
               .fill(0)
               .map((_, i) => (
                 <Card className="animate-pulse" key={i}>
                   <CardHeader>
-                    <CardTitle className="h-6 w-full max-w-48 rounded bg-muted" />
-                    <CardDescription className="h-5 w-full max-w-24 rounded bg-muted" />
+                    <Skeleton className="h-6 w-2/3" />
+                    <Skeleton className="h-5 w-1/2" />
                   </CardHeader>
                   <CardContent>
-                    <div className="relative h-40 overflow-hidden rounded bg-muted"></div>
+                    <Skeleton className="h-40" />
                   </CardContent>
                 </Card>
               ))}

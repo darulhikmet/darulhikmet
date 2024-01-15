@@ -1,11 +1,11 @@
 import Image from 'next/image'
 
-import getCommunities from '@/services/getCommunities'
-import getCommunity from '@/services/getCommunity'
-
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import About from './components/About'
 import SocialMedia from './components/SocialMedia'
+
+import getCommunities from '@/services/getCommunities'
+import getCommunity from '@/services/getCommunity'
 
 type Post = {
   content: string
@@ -43,7 +43,7 @@ export default async function Community({
       <div className="flex w-full p-6 xl:border-r">
         <div className="mx-auto max-w-screen-lg space-y-4">
           {community.posts.map((item: Post, i: number) => (
-            <Card className="overflow-x-auto" key={i}>
+            <Card key={i}>
               <CardHeader>{item.content}</CardHeader>
             </Card>
           ))}

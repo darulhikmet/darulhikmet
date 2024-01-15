@@ -2,6 +2,8 @@
 
 import { Copy, Mail, TwitterIcon } from 'lucide-react'
 
+import { Input } from '@/components/ui/input'
+import { useToast } from '@/components/ui/use-toast'
 import { Button } from './ui/button'
 import {
   Dialog,
@@ -14,9 +16,6 @@ import {
 } from './ui/dialog'
 import { Label } from './ui/label'
 import { Separator } from './ui/separator'
-
-import { Input } from '@/components/ui/input'
-import { useToast } from '@/components/ui/use-toast'
 
 export default function SupportDeveloper() {
   const { toast } = useToast()
