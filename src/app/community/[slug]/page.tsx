@@ -40,6 +40,8 @@ export async function generateStaticParams() {
   } catch (error) {
     console.error('Error fetching community slugs:', error)
   }
+
+  return []
 }
 
 export default async function Community({
