@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Skeleton } from './ui/skeleton'
 
-import getBrands from '@/services/getBrands'
+import getBrands from '@/services/brands/getBrands'
 
 type Brand = {
   name: string
@@ -29,10 +29,15 @@ export default function BoycottList() {
   const [filteredData, setFilteredData] = useState<Brand[]>()
 
   const fetchData = async () => {
-    const brands: Brand[] = JSON.parse(await getBrands())
+    try {
+      const brandsJson = await getBrands()
+      const brands: Brand[] = JSON.parse(brandsJson)
 
-    setBoycottList(brands.reverse())
-    setFilteredData(brands)
+      setBoycottList(brands.reverse())
+      setFilteredData(brands)
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    }
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

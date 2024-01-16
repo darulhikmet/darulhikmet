@@ -1,16 +1,21 @@
 'use client'
 
-import { FormEvent, useEffect, useState } from 'react'
+import moment from 'moment'
+import { useEffect, useState } from 'react'
 
 import { Card, CardHeader } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import addGuestbookEntry from '@/services/addGuestbookEntry'
-import getGuestbook from '@/services/getGuestbook'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import addEntry from '@/services/guestbook/addEntry'
+import getEntries from '@/services/guestbook/getEntries'
+
+import 'moment/locale/tr'
 
 type Guestbook = {
   message: string
+  createdAt: Date
 }
 
 export default function Guestbook() {
@@ -19,10 +24,12 @@ export default function Guestbook() {
 
   const fetchData = async () => {
     try {
-      const guestbook = await getGuestbook()
-      const guestbookList = JSON.parse(guestbook).reverse()
+      const entries = await getEntries()
+      const guestbookList = JSON.parse(entries).reverse()
 
       setGuestbookList(guestbookList)
+
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (error) {
       console.error('Error fetching guestbook:', error)
     }
@@ -32,13 +39,16 @@ export default function Guestbook() {
     fetchData()
   }, [])
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
+    const target = e.currentTarget
+
     try {
-      const message = (e.target as any).message.value
+      const message = target.message.value
+
       if (message) {
-        await addGuestbookEntry(message)
+        await addEntry(message)
         await fetchData()
 
         setNewEntryMessage('')
@@ -47,22 +57,18 @@ export default function Guestbook() {
       console.error('Error submitting the form:', error)
     }
   }
+
   return (
-    <div className="p-6">
-      <form onSubmit={e => handleSubmit(e)}>
-        <Input
-          name="message"
-          type="text"
-          placeholder="Mesaj yaz"
-          value={newEntryMessage}
-          onChange={e => setNewEntryMessage(e.target.value)}
-        />
-      </form>
-      <div className="mt-6 space-y-6">
+    <div>
+      <div className="mx-auto max-w-screen-lg space-y-6 p-6">
         {guestbookList
           ? guestbookList.map((item, i) => (
-              <Card key={i}>
+              <Card className="relative overflow-hidden" key={i}>
                 <CardHeader>{item.message}</CardHeader>
+
+                <div className="absolute bottom-0 right-0 rounded-tl bg-secondary px-2 py-1 text-xs">
+                  {moment(item.createdAt).startOf('m').fromNow()}
+                </div>
               </Card>
             ))
           : Array(20)
@@ -74,6 +80,21 @@ export default function Guestbook() {
                   </CardHeader>
                 </Card>
               ))}
+      </div>
+      <div className="sticky bottom-0 flex h-24 items-center border-t bg-background">
+        <form
+          className="mx-auto flex w-full max-w-screen-lg gap-6 px-6"
+          onSubmit={e => handleSubmit(e)}
+        >
+          <Input
+            name="message"
+            placeholder="Mesaj yaz"
+            autoComplete="off"
+            value={newEntryMessage}
+            onChange={e => setNewEntryMessage(e.target.value)}
+          />
+          <Button>Gönder</Button>
+        </form>
       </div>
     </div>
   )

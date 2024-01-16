@@ -6,12 +6,12 @@ import SupportDeveloper from '@/components/SupportDeveloper'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import OtherMenu from './components/OtherMenu'
 
-import getCommunities from '@/services/getCommunities'
+import getAllCommunities from '@/services/communities/getAllCommunities'
 
 const { version } = require('package.json')
 
 export default async function Sidebar() {
-  const communities = await getCommunities()
+  const communities = await getAllCommunities()
 
   return (
     <nav className="fixed left-0 flex h-screen w-full max-w-72 -translate-x-full flex-col border-r bg-background transition-all md:translate-x-0">
@@ -46,7 +46,7 @@ export default async function Sidebar() {
           ))}
         </div>
       </ScrollArea>
-      <div className="px-4 py-6">
+      <div className="flex min-h-24 items-center px-4">
         <OtherMenu />
       </div>
       <div className="flex min-h-24 items-center border-t px-4">

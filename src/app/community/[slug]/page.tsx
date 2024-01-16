@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import About from './components/About'
 import SocialMedia from './components/SocialMedia'
 
-import getCommunities from '@/services/getCommunities'
-import getCommunity from '@/services/getCommunity'
+import getAllCommunities from '@/services/communities/getAllCommunities'
+import getCommunityDetails from '@/services/communities/getCommunityDetails'
 
 type Post = {
   content: string
@@ -16,19 +16,30 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }) {
-  const community = await getCommunity(slug)
+  try {
+    const communityDetails = await getCommunityDetails(slug)
+    const communityName = communityDetails.name.humanReadable
 
-  return {
-    title: `${community.name.humanReadable} | Darulhikmet`
+    const title = `${communityName} | Darulhikmet`
+
+    return { title }
+  } catch (error) {
+    console.error('Error fetching community details:', error)
   }
 }
 
 export async function generateStaticParams() {
-  const communities = await getCommunities()
+  try {
+    const communities = await getAllCommunities()
 
-  return communities.map(item => {
-    return { slug: item.name.machineFriendly }
-  })
+    const communitySlugs = communities.map(item => {
+      return { slug: item.name.machineFriendly }
+    })
+
+    return communitySlugs
+  } catch (error) {
+    console.error('Error fetching community slugs:', error)
+  }
 }
 
 export default async function Community({
@@ -36,13 +47,13 @@ export default async function Community({
 }: {
   params: { slug: string }
 }) {
-  const community = await getCommunity(slug)
+  const communityDetails = await getCommunityDetails(slug)
 
   return (
     <div className="flex">
       <div className="flex w-full p-6 xl:border-r">
         <div className="mx-auto max-w-screen-lg space-y-4">
-          {community.posts.map((item: Post, i: number) => (
+          {communityDetails.posts.map((item: Post, i: number) => (
             <Card key={i}>
               <CardHeader>{item.content}</CardHeader>
             </Card>
@@ -55,18 +66,20 @@ export default async function Community({
             <div className="relative h-60 overflow-hidden rounded bg-muted">
               <Image
                 className="object-cover"
-                src={community.avatar}
+                src={communityDetails.avatar}
                 alt={`${slug} topluluk resmi`}
                 fill
               />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="font-medium">{community.name.humanReadable}</div>
+            <div className="font-medium">
+              {communityDetails.name.humanReadable}
+            </div>
           </CardContent>
         </Card>
-        <About about={community.about} />
-        <SocialMedia socialMedia={community.socialMedia} />
+        <About about={communityDetails.about} />
+        <SocialMedia socialMedia={communityDetails.socialMedia} />
       </div>
     </div>
   )

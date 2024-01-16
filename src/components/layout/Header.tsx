@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import AuthButtons from '@/components/AuthButtons'
-import { Badge } from '@/components/ui/badge'
 
 export default function Header() {
   return (
@@ -10,16 +9,10 @@ export default function Header() {
         <Link className="hover:text-foreground" href="/filistin">
           Filistin
         </Link>
-        <Link className="hover:text-foreground" href="/hastag-calismalari">
-          Hastag Çalışmaları
-        </Link>
         <Link className="hover:text-foreground" href="/boycott">
           Boykot
         </Link>
-        <Link className="relative hover:text-foreground" href="/guestbook">
-          <Badge className="absolute right-0 top-0 -translate-y-full translate-x-full">
-            Yeni
-          </Badge>
+        <Link className="hover:text-foreground" href="/guestbook">
           Ziyaretci Defteri
         </Link>
       </div>
