@@ -3,11 +3,11 @@
 import moment from 'moment'
 import { useEffect, useState } from 'react'
 
+import { Button } from '@/components/ui/button'
 import { Card, CardHeader } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import addEntry from '@/services/guestbook/addEntry'
 import getEntries from '@/services/guestbook/getEntries'
 

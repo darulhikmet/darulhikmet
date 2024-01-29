@@ -56,7 +56,7 @@ export default function BoycottList() {
   }, [])
 
   return (
-    <div>
+    <div className="mt-6">
       <Input
         type="text"
         placeholder="Marka ara"
@@ -80,8 +80,8 @@ export default function BoycottList() {
                   <div className="relative h-40 overflow-hidden rounded bg-muted">
                     {item.logo && (
                       <Image
-                        className="object-cover grayscale"
-                        src={item.logo}
+                        className="object-cover"
+                        src={`/brands/${item.logo}`}
                         alt={item.name}
                         fill
                       />

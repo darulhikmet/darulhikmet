@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
 
@@ -10,15 +11,15 @@ import Sidebar from '@/components/layout/Sidebar'
 import ThemeProvider from '@/components/providers/ThemeProvider'
 import { Toaster } from '@/components/ui/toaster'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Darulhikmet',
   description: 'Çeşitli dini kaynakları tek bir yerde buluşturan platform.',
   manifest: '/manifest.json',
-  metadataBase: process.env.SITE_URL,
+  metadataBase: new URL(process.env.SITE_URL || 'http://localhost:3000'),
   openGraph: { images: '/opengraph-image.jpg' }
 }
 
-export const viewport = {
+export const viewport: Viewport = {
   themeColor: '#000'
 }
 

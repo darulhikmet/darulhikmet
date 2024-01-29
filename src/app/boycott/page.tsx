@@ -1,13 +1,11 @@
+import type { Metadata } from 'next'
+
 import BoycottList from '@/components/BoycottList'
 
-export const metadata = {
-  title: 'Boykot'
+export const metadata: Metadata = {
+  title: 'Boykot | Darulhikmet'
 }
 
 export default function Boycott() {
-  return (
-    <div className="p-6">
-      <BoycottList />
-    </div>
-  )
+  return <BoycottList />
 }

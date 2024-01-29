@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import SupportDeveloper from '@/components/SupportDeveloper'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import OtherMenu from './components/OtherMenu'
+import OtherMenu from './OtherMenu'
 
 import getAllCommunities from '@/services/communities/getAllCommunities'
 
