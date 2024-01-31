@@ -60,7 +60,7 @@ export default function Guestbook() {
 
   return (
     <div>
-      <div className="mx-auto max-w-screen-lg space-y-6 p-6">
+      <div className="mx-auto max-w-screen-lg space-y-4 p-4 md:space-y-6 md:p-6">
         {guestbookList
           ? guestbookList.map((item, i) => (
               <Card className="relative overflow-hidden" key={i}>

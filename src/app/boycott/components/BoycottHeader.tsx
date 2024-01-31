@@ -21,7 +21,7 @@ export default function BoycottHeader() {
   const pathname = usePathname()
 
   return (
-    <div className="flex flex-wrap gap-4 rounded-lg border p-4">
+    <div className="flex gap-4 overflow-x-auto border-b p-4 md:p-6">
       {menuItems.map((item, index) => (
         <Button
           variant={pathname == item.href ? 'default' : 'secondary'}

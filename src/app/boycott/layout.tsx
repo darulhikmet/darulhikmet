@@ -1,4 +1,4 @@
-import BoycottHeader from './components/boycottHeader'
+import BoycottHeader from './components/BoycottHeader'
 
 export default function BoycottLayout({
   children
@@ -6,7 +6,7 @@ export default function BoycottLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="p-6">
+    <div>
       <BoycottHeader />
       {children}
     </div>

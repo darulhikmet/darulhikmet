@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import BoycottList from '@/components/BoycottList'
+import BoycottList from './components/BoycottList'
 
 export const metadata: Metadata = {
   title: 'Boykot | Darulhikmet'

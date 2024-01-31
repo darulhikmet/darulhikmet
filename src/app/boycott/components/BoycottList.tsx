@@ -12,7 +12,7 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Skeleton } from './ui/skeleton'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import getBrands from '@/services/brands/getBrands'
 
@@ -56,14 +56,14 @@ export default function BoycottList() {
   }, [])
 
   return (
-    <div className="mt-6">
+    <div className="p-4 md:p-6">
       <Input
         type="text"
         placeholder="Marka ara"
         value={searchTerm}
         onChange={handleSearch}
       />
-      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:mt-6 md:gap-6 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {filteredData
           ? filteredData.map((item, i) => (
               <Card className="relative" key={i}>

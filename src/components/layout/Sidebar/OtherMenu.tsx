@@ -17,7 +17,7 @@ export default function OtherMenu() {
           Daha Fazla
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" side="right" sideOffset={32}>
+      <DropdownMenuContent align="end" side="right" sideOffset={48}>
         <div className="*:cursor-pointer">
           <DropdownMenuItem asChild>
             <Link href="/about">
