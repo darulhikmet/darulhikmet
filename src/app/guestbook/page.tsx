@@ -81,7 +81,7 @@ export default function Guestbook() {
                 </Card>
               ))}
       </div>
-      <div className="sticky bottom-0 flex h-24 items-center border-t bg-background">
+      <div className="sticky bottom-0 flex min-h-20 items-center border-t bg-background md:min-h-24">
         <form
           className="mx-auto flex w-full max-w-screen-lg gap-6 px-6"
           onSubmit={e => handleSubmit(e)}

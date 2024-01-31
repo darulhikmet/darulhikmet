@@ -53,7 +53,7 @@ export default async function Community({
 
   return (
     <div className="flex">
-      <div className="flex w-full p-6 xl:border-r">
+      <div className="flex w-full p-4 md:p-6 xl:border-r">
         <div className="mx-auto max-w-screen-lg space-y-4">
           {communityDetails.posts.map((item: Post, i: number) => (
             <Card key={i}>

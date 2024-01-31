@@ -20,7 +20,7 @@ export default function Header() {
   const pathname = usePathname()
 
   return (
-    <div className="sticky top-0 z-10 flex min-h-24 cursor-pointer items-center border-b bg-background/90 px-4 text-muted-foreground backdrop-blur md:px-6">
+    <div className="sticky top-0 z-10 flex min-h-20 cursor-pointer items-center border-b bg-background/90 px-4 text-muted-foreground backdrop-blur md:min-h-24 md:px-6">
       <div className="space-x-4">
         {menuItems.map((link, index) => (
           <Link

@@ -16,7 +16,7 @@ import { useSidebarStore } from '@/store/zustand'
 const { version } = require('package.json')
 
 export default function Sidebar() {
-  const [communities, setCommunities] = useState() as any
+  const [communities, setCommunities] = useState() as any // TODO
 
   const { isOpen } = useSidebarStore()
 
@@ -37,7 +37,7 @@ export default function Sidebar() {
       className={`fixed left-0 z-20 flex h-screen w-full max-w-72 -translate-x-full flex-col border-r bg-background transition-all md:translate-x-0 ${isOpen && 'translate-x-0'}`}
     >
       <Link
-        className="group relative flex min-h-24 items-center justify-center border-b text-2xl font-bold"
+        className="group relative flex min-h-20 items-center justify-center border-b text-2xl font-bold md:min-h-24"
         href="/"
       >
         Darulhikmet
@@ -49,24 +49,29 @@ export default function Sidebar() {
       <ScrollArea className="h-full">
         <div className="flex flex-col px-4 py-4 text-sm font-medium text-muted-foreground md:px-6 md:py-6">
           {communities
-            ? communities.map((item: any, i: number) => (
-                <Link
-                  className={`relative flex items-center rounded px-4 py-2 hover:bg-muted/25 hover:text-foreground ${`/community/${item.name.machineFriendly}` == pathname && '!bg-muted text-foreground'}`}
-                  href={`/community/${item.name.machineFriendly}`}
-                  key={i}
-                >
-                  <span className="relative size-5 min-w-5 overflow-hidden rounded-full bg-muted">
-                    <Image
-                      className="object-cover"
-                      src={item.avatar}
-                      alt={`${item.name.humanReadable} topluluk resmi`}
-                      fill
-                    />
-                  </span>
-                  <span className="ml-2">{item.name.humanReadable}</span>
-                  {/* <Badge className="absolute right-2">Yeni</Badge> */}
-                </Link>
-              ))
+            ? communities.map(
+                (
+                  item: any,
+                  i: number // TODO
+                ) => (
+                  <Link
+                    className={`relative flex items-center rounded px-4 py-2 hover:bg-muted/25 hover:text-foreground ${`/community/${item.name.machineFriendly}` == pathname && '!bg-muted text-foreground'}`}
+                    href={`/community/${item.name.machineFriendly}`}
+                    key={i}
+                  >
+                    <span className="relative size-5 min-w-5 overflow-hidden rounded-full bg-muted">
+                      <Image
+                        className="object-cover"
+                        src={item.avatar}
+                        alt={`${item.name.humanReadable} topluluk resmi`}
+                        fill
+                      />
+                    </span>
+                    <span className="ml-2">{item.name.humanReadable}</span>
+                    {/* <Badge className="absolute right-2">Yeni</Badge> */}
+                  </Link>
+                )
+              )
             : Array(8)
                 .fill(0)
                 .map((_, i) => (
@@ -82,10 +87,10 @@ export default function Sidebar() {
                 ))}
         </div>
       </ScrollArea>
-      <div className="flex min-h-24 items-center px-4 md:px-6">
+      <div className="flex min-h-20 items-center px-4 md:min-h-24 md:px-6">
         <OtherMenu />
       </div>
-      <div className="flex min-h-24 items-center border-t px-4 md:px-6">
+      <div className="flex min-h-20 items-center border-t px-4 md:min-h-24 md:px-6">
         <SupportDeveloper />
       </div>
     </aside>
