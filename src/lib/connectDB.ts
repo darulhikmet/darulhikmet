@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const MONGODB_URI = process.env.MONGODB_URI as string
+const MONGODB_URI = process.env.MONGODB_URI
 
 export default async function connectDB() {
   try {
@@ -8,5 +8,6 @@ export default async function connectDB() {
     console.log('Connected to MongoDB')
   } catch (error) {
     console.error('Error connecting to MongoDB:', error)
+    throw error
   }
 }

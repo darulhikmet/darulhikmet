@@ -1,4 +1,4 @@
-import getAllCommunities from '@/services/communities/getAllCommunities'
+import getAllCommunities from '@/services/community/getAllCommunities'
 
 export async function GET() {
   try {
@@ -7,6 +7,6 @@ export async function GET() {
     return Response.json(communities)
   } catch (error) {
     console.error('Error handling GET request:', error)
-    throw new Error('Error handling GET request')
+    throw error
   }
 }

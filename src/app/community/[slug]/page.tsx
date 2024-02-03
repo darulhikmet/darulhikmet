@@ -4,12 +4,8 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import About from './components/About'
 import SocialMedia from './components/SocialMedia'
 
-import getAllCommunities from '@/services/communities/getAllCommunities'
-import getCommunityDetails from '@/services/communities/getCommunityDetails'
-
-type Post = {
-  content: string
-}
+import getAllCommunities from '@/services/community/getAllCommunities'
+import getCommunityDetails from '@/services/community/getCommunityDetails'
 
 export async function generateMetadata({
   params: { slug }
@@ -25,6 +21,7 @@ export async function generateMetadata({
     return { title }
   } catch (error) {
     console.error('Error fetching community details:', error)
+    throw error
   }
 }
 
@@ -39,9 +36,8 @@ export async function generateStaticParams() {
     return communitySlugs
   } catch (error) {
     console.error('Error fetching community slugs:', error)
+    throw error
   }
-
-  return []
 }
 
 export default async function Community({
@@ -49,13 +45,13 @@ export default async function Community({
 }: {
   params: { slug: string }
 }) {
-  const communityDetails = await getCommunityDetails(slug)
+  const communityDetails: Community = await getCommunityDetails(slug)
 
   return (
     <div className="flex">
       <div className="flex w-full p-4 md:p-6 xl:border-r">
         <div className="mx-auto max-w-screen-lg space-y-4">
-          {communityDetails.posts.map((item: Post, i: number) => (
+          {communityDetails.posts.map((item, i: number) => (
             <Card key={i}>
               <CardHeader>{item.content}</CardHeader>
             </Card>

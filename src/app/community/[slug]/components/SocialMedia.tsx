@@ -1,15 +1,10 @@
-import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
-
 import { Card, CardHeader } from '@/components/ui/card'
-
-type SocialMediaLinks = {
-  [key: string]: string
-}
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
 
 export default function CommunitySocialMedia({
   socialMedia
 }: {
-  socialMedia: SocialMediaLinks
+  socialMedia: Community['socialMedia']
 }) {
   const socialMediaIcons = [
     { icon: <Twitter />, key: 'twitter' },
@@ -24,10 +19,10 @@ export default function CommunitySocialMedia({
         <div className="flex justify-around">
           {socialMediaIcons.map(
             ({ icon, key }) =>
-              socialMedia[key] && (
+              socialMedia[key as keyof typeof socialMedia] && (
                 <a
                   key={key}
-                  href={socialMedia[key]}
+                  href={socialMedia[key as keyof typeof socialMedia]}
                   target="_blank"
                   aria-label={`${key} simgesi`}
                 >

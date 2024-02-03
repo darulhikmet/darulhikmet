@@ -32,6 +32,7 @@ export default function Guestbook() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (error) {
       console.error('Error fetching guestbook:', error)
+      throw error
     }
   }
 
@@ -55,6 +56,7 @@ export default function Guestbook() {
       }
     } catch (error) {
       console.error('Error submitting the form:', error)
+      throw error
     }
   }
 

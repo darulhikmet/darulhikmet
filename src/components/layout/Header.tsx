@@ -6,7 +6,9 @@ import { usePathname } from 'next/navigation'
 
 import AuthButtons from '@/components/AuthButtons'
 
-import { useSidebarStore } from '@/store/zustand'
+import { useSidebarStore } from '@/stores/useSidebarStore'
+
+import { cn } from '@/lib/utils'
 
 const menuItems = [
   { href: '/filistin', text: 'Filistin' },
@@ -24,7 +26,10 @@ export default function Header() {
       <div className="space-x-4">
         {menuItems.map((link, index) => (
           <Link
-            className={`hover:text-foreground ${link.href == pathname && 'text-foreground'}`}
+            className={cn(
+              'hover:text-foreground',
+              link.href === pathname && 'text-foreground'
+            )}
             href={link.href}
             key={index}
           >

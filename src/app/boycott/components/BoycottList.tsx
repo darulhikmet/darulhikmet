@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import getBrands from '@/services/brands/getBrands'
+import getBrands from '@/services/brand/getBrands'
 
 type Brand = {
   name: string
@@ -37,6 +37,7 @@ export default function BoycottList() {
       setFilteredData(brands)
     } catch (error) {
       console.error('Error fetching data:', error)
+      throw error
     }
   }
 
@@ -74,7 +75,9 @@ export default function BoycottList() {
                 )}
                 <CardHeader>
                   <CardTitle className="truncate">{item.name}</CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
+                  <CardDescription className="truncate">
+                    {item.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="relative h-40 overflow-hidden rounded bg-muted">

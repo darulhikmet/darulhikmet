@@ -11,6 +11,8 @@ import Sidebar from '@/components/layout/Sidebar'
 import ThemeProvider from '@/components/providers/ThemeProvider'
 import { Toaster } from '@/components/ui/toaster'
 
+import { cn } from '@/lib/utils'
+
 export const metadata: Metadata = {
   title: 'Darulhikmet',
   description: 'Çeşitli dini kaynakları tek bir yerde buluşturan platform.',
@@ -29,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="tr" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="tr" className={cn(GeistSans.variable, GeistMono.variable)}>
       <body>
         <ThemeProvider>
           <Sidebar />
