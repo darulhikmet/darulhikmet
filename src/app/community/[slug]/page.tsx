@@ -7,6 +7,8 @@ import SocialMedia from './components/SocialMedia'
 import getAllCommunities from '@/services/community/getAllCommunities'
 import getCommunityDetails from '@/services/community/getCommunityDetails'
 
+import { Community } from '@/lib/types'
+
 export async function generateMetadata({
   params: { slug }
 }: {

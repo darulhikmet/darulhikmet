@@ -13,6 +13,7 @@ import OtherMenu from './OtherMenu'
 
 import { useSidebarStore } from '@/stores/useSidebarStore'
 
+import { Community } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
 const { version } = require('package.json')
@@ -76,7 +77,7 @@ export default function Sidebar() {
                   {/* <Badge className="absolute right-2">Yeni</Badge> */}
                 </Link>
               ))
-            : Array(8)
+            : Array(9)
                 .fill(0)
                 .map((_, i) => (
                   <div className="flex items-center px-4 py-2" key={i}>

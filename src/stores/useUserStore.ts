@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+import { User } from '@/lib/types'
+
 type UserStore = {
   user: User
   setUser: (newUser: User) => void

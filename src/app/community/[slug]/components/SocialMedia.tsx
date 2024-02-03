@@ -1,5 +1,8 @@
-import { Card, CardHeader } from '@/components/ui/card'
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
+
+import { Card, CardHeader } from '@/components/ui/card'
+
+import { Community } from '@/lib/types'
 
 export default function CommunitySocialMedia({
   socialMedia

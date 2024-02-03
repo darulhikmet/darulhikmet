@@ -208,7 +208,7 @@ export default function AuthButtons() {
           <AvatarFallback>{user.username.slice(0, 2)}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-60" align="end">
+      <DropdownMenuContent className="w-56" align="end" sideOffset={48}>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{user.username}</p>
