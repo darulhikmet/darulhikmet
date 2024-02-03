@@ -53,7 +53,7 @@ export default function Sidebar() {
       </Link>
       <ScrollArea className="h-full">
         <div className="flex flex-col px-4 py-4 text-sm font-medium text-muted-foreground md:px-6 md:py-6">
-          {communities
+          {communities.length > 0
             ? communities.map((item: Community, i: number) => (
                 <Link
                   className={cn(
@@ -100,5 +100,3 @@ export default function Sidebar() {
     </aside>
   )
 }
-
-export const revalidate = 86400
